@@ -1,0 +1,20 @@
+{
+  "name": "email-send",
+  "version": "1.0.0",
+  "description": "Sample app using nodemailer, express",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "author": "Lakshman Gope",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "chalk": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.15.4",
+    "express-handlebars": "^3.0.0",
+    "nodemailer": "^4.1.0"
+  }
+}

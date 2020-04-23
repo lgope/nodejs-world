@@ -1,0 +1,1 @@
+the goal of this repo is just saving my nodejs basic type projects which I'm gonna do for learning purposes.
