@@ -54,6 +54,18 @@ app.post('/send', (req, res) => {
     },
   });
 
+  // email sending by gmail  
+  // let transporter = nodemailer.createTransport({
+  //   service: 'gmail',
+  //   auth: {
+  //     user: process.env.GMAIL,
+  //     pass: process.env.GMAIL_PASS,
+  //   },
+  //   tls: {
+  //     rejectUnauthorized: false,
+  //   },
+  // });
+
   // Message object
   let mailOptions = {
     from: `Lakshman Gope <${process.env.EMAIL_FROM}>`, // sender address
