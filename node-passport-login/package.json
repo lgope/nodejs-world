@@ -1,0 +1,31 @@
+{
+  "name": "node-passport-login",
+  "version": "1.0.0",
+  "description": "node login system boilerplat using passportjs",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgope/nodejs-world.git"
+  },
+  "keywords": [
+    "ejs",
+    "nodejs",
+    "passportjs",
+    "expressjs",
+    "mongodb"
+  ],
+  "author": "Lakshman Gope",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lgope/nodejs-world/issues"
+  },
+  "homepage": "https://github.com/lgope/nodejs-world#readme",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "express": "^4.17.1"
+  }
+}
