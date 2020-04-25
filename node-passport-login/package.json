@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/lgope/nodejs-world#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "chalk": "^4.0.0",
     "express": "^4.17.1"
   }
