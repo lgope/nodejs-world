@@ -22,7 +22,7 @@ router.post('/signup', async (req, res) => {
   }
 
   if (errors.length > 0) {
-    return res.render('register', {
+    return res.render('signup', {
       errors,
       name,
       email,
@@ -36,7 +36,7 @@ router.post('/signup', async (req, res) => {
 
     if (user) {
       errors.push({ msg: 'Email already exists' });
-      return res.render('register', {
+      return res.render('signup', {
         errors,
         name,
         email,
