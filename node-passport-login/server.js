@@ -5,23 +5,23 @@ const dotenv = require('dotenv');
 dotenv.config({ path: './config.env' });
 const app = require('./app');
 
-const DB = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
+// const DB = process.env.DATABASE.replace(
+//   '<PASSWORD>',
+//   process.env.DATABASE_PASSWORD
+// );
 
 // mongo atlas cloud database connetion
-mongoose
-  .connect(DB, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
-  .then(() => console.log('DB connection successful!'))
-  .catch((err) => {
-    console.log(Error, err.message);
-  });
+// mongoose
+//   .connect(DB, {
+//     useUnifiedTopology: true,
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useFindAndModify: false,
+//   })
+//   .then(() => console.log('DB connection successful!'))
+//   .catch((err) => {
+//     console.log(Error, err.message);
+//   });
 
 // Connect to MongoDB with localhost
 mongoose
