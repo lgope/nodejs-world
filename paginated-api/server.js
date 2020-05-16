@@ -1,47 +1,40 @@
-const express = require('express');
+const mongoose = require('mongoose');
 const chalk = require('chalk');
-const app = express();
 
-const users = [
-  { id: 1, name: 'user 1' },
-  { id: 2, name: 'user 2' },
-  { id: 3, name: 'user 3' },
-  { id: 4, name: 'user 4' },
-  { id: 5, name: 'user 5' },
-  { id: 6, name: 'user 6' },
-  { id: 7, name: 'user 7' },
-  { id: 8, name: 'user 8' },
-  { id: 9, name: 'user 9' },
-  { id: 10, name: 'user 10' },
-];
+const app = require('./app');
+const User = require('./model/userModel');
 
-app.get('/users', (req, res) => {
-  const page = parseInt(req.query.page);
-  const limit = parseInt(req.query.limit);
+mongoose
+  .connect('mongodb://localhost/pagination-api', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('DB connection successful!'))
+  .catch(err => console.log(chalk.redBright(err)));
 
-  const startIndex = (page - 1) * limit;
-  const endIndex = page * limit;
 
-  const results = {};
+const db = mongoose.connection;
+db.once('open', async () => {
+  if ((await User.countDocuments().exec()) > 0) return;
 
-  if (endIndex < users.length) {
-    results.next = {
-      page: page + 1,
-      limit,
-    };
-  }
-
-  if (startIndex > 0) {
-    results.previous = {
-      page: page - 1,
-      limit,
-    };
-  }
-
-  results.results = users.slice(startIndex, endIndex);
-  res.json(results);
+  Promise.all([
+    User.create({ name: 'User 1' }),
+    User.create({ name: 'User 2' }),
+    User.create({ name: 'User 3' }),
+    User.create({ name: 'User 4' }),
+    User.create({ name: 'User 5' }),
+    User.create({ name: 'User 6' }),
+    User.create({ name: 'User 7' }),
+    User.create({ name: 'User 8' }),
+    User.create({ name: 'User 9' }),
+    User.create({ name: 'User 10' }),
+    User.create({ name: 'User 11' }),
+    User.create({ name: 'User 12' }),
+  ]).then(() => console.log('Added Users 🙂'));
 });
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`Server running at ${chalk.greenBright(port)}`));
+app.listen(port, () =>
+  console.log(`Server running at ${chalk.greenBright(port)}`)
+);
