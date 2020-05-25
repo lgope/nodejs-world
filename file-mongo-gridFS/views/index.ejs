@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
 
     <title>Mongo File Upload</title>
 </head>
@@ -19,18 +19,28 @@
                 <h1 class="text-center display-4 my-4">Mongo File Upload</h1>
                 <form action="/upload" method="POST" enctype="multipart/form-data">
                     <div class="custom-file mb-3">
-                        <input type="file" name="file" id="file" class="custom-file-input">
-
+                        <input type="file" name="file" id="file" class="custom-file-input" />
 
                         <label for="file" class="custom-file-label"> Choose File</label>
                     </div>
-                    <input type="submit" value="Submit" class="btn btn-primary btn-block">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
                 </form>
+                <hr />
+                <% if(files){ %> <% files.forEach(file => { %>
+                <div class="card card-body mb-3">
+                    <% if(file.isImage) { %>
+                    <img src="image/<%= file.filename %>" alt="" style="width: 100%;" />
+                    <% } else { %> <%= file.filename %> <% } %>
+                    <form method="POST" action="/files/<%= file._id %>?_method=DELETE">
+                        <button class="btn btn-danger btn-block mt-4">Delete</button>
+                    </form>
+                </div>
+                <% }) %> <% } else { %>
+                <p>No files found to show</p>
+                <% } %>
             </div>
         </div>
     </div>
-
-
 
     <!-- bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
