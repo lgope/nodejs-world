@@ -1,6 +1,6 @@
 const express = require('express');
-const path = require('path');
 const morgan = require('morgan');
+const path = require('path');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const dotenv = require('dotenv');
@@ -54,7 +54,10 @@ if (process.env.NODE_ENV === 'development') {
   app.set('view engine', '.hbs');
 }
 
-app.use('/', require('./routes/index'))
+// static file
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', require('./routes/index'));
 
 const port = process.env.PORT || 3000;
 app.listen(

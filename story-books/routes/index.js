@@ -7,13 +7,15 @@ router.get('/', (req, res) => {
   //   res.render('login', {
   //     layout: 'login',
   //   });
-  res.send('Login Page');
+  res.render('login', {
+    layout: 'login'
+  });
 });
 
 // @desc  dashboard
 // @route GET /dashboard
 router.get('/dashboard', (req, res) => {
-  res.send('Dashboard Page');
+  res.render('dashboard');
 });
 // router.get('/dashboard', ensureAuth, async (req, res) => {
 //   try {
