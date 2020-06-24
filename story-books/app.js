@@ -11,8 +11,15 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const connectMongoDB = require('./config/dbconfig');
 
+// routes
+const indexRoute = require('./routes/index');
+const authRoute = require('./routes/authRoute');
+
 // load config
 dotenv.config({ path: './config/config.env' });
+
+// passport config
+require('./config/passportConfig')(passport);
 
 // connect mongo db
 connectMongoDB();
@@ -54,10 +61,24 @@ if (process.env.NODE_ENV === 'development') {
   app.set('view engine', '.hbs');
 }
 
+// sessions stuff
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 // static file
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', require('./routes/index'));
+app.use('/', indexRoute);
+app.use('/auth', authRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(
