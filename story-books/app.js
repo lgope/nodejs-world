@@ -14,6 +14,7 @@ const connectMongoDB = require('./config/dbconfig');
 // routes
 const indexRoute = require('./routes/index');
 const authRoute = require('./routes/authRoute');
+const storiesRoute = require('./routes/storiesRoute');
 
 // load config
 dotenv.config({ path: './config/config.env' });
@@ -67,6 +68,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    store: new MongoStore({mongooseConnection: mongoose.connection})
   })
 );
 
@@ -79,6 +81,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRoute);
 app.use('/auth', authRoute);
+app.use('/stories', storiesRoute);
 
 const port = process.env.PORT || 3000;
 app.listen(
