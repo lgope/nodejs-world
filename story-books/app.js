@@ -36,25 +36,25 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 
   // handlebars Helpers
-  //   const {
-  //     stripTags,
-  //     formatDate,
-  //     truncate,
-  //     select,
-  //     editIcon,
-  //   } = require('./helpers/hbs');
+  const {
+    stripTags,
+    formatDate,
+    truncate,
+    select,
+    editIcon,
+  } = require('./helpers/hbs');
 
   // handlebars
   app.engine(
     '.hbs',
     exphbs({
-      //   helpers: {
-      //     stripTags,
-      //     formatDate,
-      //     editIcon,
-      //     select,
-      //     truncate,
-      //   },
+      helpers: {
+        stripTags,
+        formatDate,
+        editIcon,
+        select,
+        truncate,
+      },
       defaultLayout: 'main',
       extname: '.hbs',
     })
@@ -68,7 +68,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    store: new MongoStore({mongooseConnection: mongoose.connection})
+    store: new MongoStore({ mongooseConnection: mongoose.connection }),
   })
 );
 
