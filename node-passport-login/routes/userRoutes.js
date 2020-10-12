@@ -1,5 +1,6 @@
 const express = require('express');
 const passport = require('passport');
+const authController = require('../controllers/authController');
 
 const { forwardAuthenticated } = require('../config/authConfig');
 
@@ -79,6 +80,12 @@ router.post('/login', (req, res, next) => {
     failureFlash: true,
   })(req, res, next);
 });
+
+
+// Forget Password Page
+router.get('/forgetpass', (req, res) => res.render('forgetpass'));
+
+router.post('/forgetpass', authController.forgotPassword)
 
 // Logout
 router.get('/logout', (req, res) => {

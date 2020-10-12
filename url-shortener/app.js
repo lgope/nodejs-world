@@ -1,5 +1,5 @@
-const express = require('express');
-const ShortUrl = require('./models/shortUrl');
+import express from 'express';
+import ShortUrl from './models/shortUrl.js';
 
 const app = express();
 
@@ -27,4 +27,4 @@ app.get('/:shortUrl', async (req, res) => {
   res.redirect(shortUrl.full);
 });
 
-module.exports = app;
+export default app;
