@@ -2,9 +2,11 @@
   "name": "url-shortener",
   "version": "1.0.0",
   "description": "simple url shortener using nodejs, expressjs, mongodb",
-  "main": "index.js",
+  "main": "server.js",
+  "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",

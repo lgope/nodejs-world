@@ -1,2 +1,4 @@
 node_modules
 *.env
+markdown-blog/
+node-passport-login/
