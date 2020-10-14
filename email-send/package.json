@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Sample app using nodemailer, express",
   "main": "app.js",
+  "type": "module",
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js"
