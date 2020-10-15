@@ -1,10 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const exphbs = require('express-handlebars');
-const path = require('path');
-const nodemailer = require('nodemailer');
-const chalk = require('chalk');
-const dotenv = require('dotenv');
+import express from 'express';
+import bodyParser from 'body-parser';
+import exphbs from 'express-handlebars';
+import path from 'path';
+import nodemailer from 'nodemailer';
+import chalk from 'chalk';
+import dotenv from 'dotenv';
 
 dotenv.config({ path: './config.env' });
 const app = express();
@@ -14,6 +14,7 @@ app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
 
 // Static folder
+const __dirname = path.resolve();
 app.use('/public', express.static(path.join(__dirname, 'public')));
 // Body Parser Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -54,7 +55,7 @@ app.post('/send', (req, res) => {
     },
   });
 
-  // email sending by gmail  
+  // email sending by gmail
   // let transporter = nodemailer.createTransport({
   //   service: 'gmail',
   //   auth: {
@@ -90,4 +91,6 @@ app.post('/send', (req, res) => {
 });
 
 const port = process.env.PORT || 8000;
-app.listen(port, () => console.log(chalk.greenBright(`Server started at ${port}`)));
+app.listen(port, () =>
+  console.log(chalk.greenBright(`Server started at ${port}`))
+);

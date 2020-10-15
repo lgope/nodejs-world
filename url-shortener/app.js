@@ -1,5 +1,8 @@
-import express from 'express';
+import express from 'express'; 
 import ShortUrl from './models/shortUrl.js';
+
+const express = require('express');
+
 
 const app = express();
 
