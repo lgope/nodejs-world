@@ -26,7 +26,7 @@
   "homepage": "https://github.com/lgope/markdown-blog#readme",
   "dependencies": {
     "chalk": "^4.0.0",
-    "dompurify": "^2.0.8",
+    "dompurify": "^2.0.17",
     "dotenv": "^8.2.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
