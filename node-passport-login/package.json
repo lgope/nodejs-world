@@ -29,12 +29,12 @@
     "chalk": "^4.0.0",
     "connect-flash": "^0.1.1",
     "dotenv": "^8.2.0",
-    "ejs": "^3.1.2",
+    "ejs": "^3.1.7",
     "express": "^4.17.3",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
-    "mongoose": "^5.9.10",
-    "passport": "^0.4.1",
+    "mongoose": "^5.13.17",
+    "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   }
 }
