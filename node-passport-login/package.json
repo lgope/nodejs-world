@@ -33,7 +33,7 @@
     "express": "^4.17.3",
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.1",
-    "mongoose": "^5.13.17",
+    "mongoose": "^5.13.20",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0"
   }
